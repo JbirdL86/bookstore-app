@@ -9,11 +9,11 @@ const BookList = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => { 
+  useEffect(() => {
     const loadAction = bindActionCreators(loadBooks, dispatch);
     loadAction();
     return null;
-   }, [dispatch]);
+  }, [dispatch]);
 
   return (
     <>
