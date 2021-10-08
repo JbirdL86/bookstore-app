@@ -11,10 +11,17 @@
 - Redux
 - Developed in VSCode
 
+
+## Link
+
+Get a live preview of the project on this link  
+
+- Link: [Live-Preview](https://bookstorejl.herokuapp.com/)
+
 ## Setup 
 ### clone repository
 ```bash
-$ git clone git@github.com:JbirdL86/Bookstore.git
+$ git clone git@github.com:JbirdL86/bookstore-app.git
 ```
 ### Start Project
 ```bash
