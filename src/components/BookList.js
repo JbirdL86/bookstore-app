@@ -1,19 +1,29 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { loadBooks } from '../redux/books/books';
 import BookItem from './BookItem';
 
 const BookList = () => {
   const books = useSelector((state) => state.books);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => { 
+    const loadAction = bindActionCreators(loadBooks, dispatch);
+    loadAction();
+    return null;
+   }, [dispatch]);
+
   return (
     <>
-      <ul>
-        {books.map((book) => (
+      <ul className="book-list">
+        {Object.keys(books).map((bookId) => (
           <BookItem
-            key={book.id}
-            bookId={book.bookId}
-            title={book.title}
-            author={book.author}
+            key={bookId}
+            bookId={bookId}
+            title={books[bookId][0].title}
+            category={books[bookId][0].category}
           />
         ))}
       </ul>
