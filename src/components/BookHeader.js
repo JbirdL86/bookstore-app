@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeBook } from '../redux/books/books';
+import '../pages/index.css';
 
 const links = [
   {
@@ -20,7 +21,7 @@ const links = [
 ];
 
 const BookHeader = (props) => {
-  const { bookId, title, author } = props;
+  const { bookId, title, category } = props;
   const dispatch = useDispatch();
   const dispatchRemoveBook = bindActionCreators(removeBook, dispatch);
 
@@ -36,22 +37,22 @@ const BookHeader = (props) => {
     <>
       <div className="nav-bookheader">
         <div className="category">
-          <p>Category</p>
+          {category}
         </div>
-        <div className="title">
+        <h4 className="title">
           {title}
-        </div>
-        <div className="author">
-          {author}
-        </div>
+        </h4>
+        <p className="author">Pablo Cohelo</p>
         <div className="links-list">
           <ul className="book-menu">
             <li className="item-button">
               <button type="button">{links[0].text}</button>
             </li>
+            <li className="button-sep" />
             <li className="item-button">
               <button id={bookId} type="button" onClick={removeBookFromStore}>{links[1].text}</button>
             </li>
+            <li className="button-sep" />
             <li className="item-button">
               <button type="button">{links[2].text}</button>
             </li>
@@ -64,7 +65,7 @@ const BookHeader = (props) => {
 
 BookHeader.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   bookId: PropTypes.string.isRequired,
 };
 
